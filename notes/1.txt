@@ -1,0 +1,36 @@
+id: 1
+tags: azet
+
+What is this?
+
+I'm interested in making a Zettelkasten tool that I can use to make my own evergreen notes repository.
+
+The primary ingredients are: notes, ids, tags, and indexes.
+
+This is a note.  It's a short plain-text document that records my thoughts around some central idea.
+
+Right now notes are plain text, but I hope to have them become a little more sophisticated in the future.
+
+Every note has an id, which are '.' delimited numbers.  For example this note's id is '1'.
+
+A note's id never changes.  If I want to add to a note in the future, I can add another dot-suffix.
+
+E.g. If I write notes '1', and '2', and want to follow up with '1', I can write '1.1', and then '1.2'.
+
+The follow-ups might even get their own follow-ups, '1.2.1', '1.2.2', and so on.
+
+Tags are strings used to mark topics that are common to multiple notes.
+
+At the time of writing, this note has the "azet" tag, since "azet" is the name of the tool right now.
+
+Tags can change in the future.  The most boring way is to unify a bunch of ways of saying the same thing.
+
+E.g. "My Systems", "Systems", "Systems in Use" might all get re-named to a single tag "Systems".
+
+Tags also might change as my ontology changes.  In general I don't think I'll remove many tags, but I might replace them as I refine my thoughts.
+
+Indexes are auto-generated lists that make it easy to traverse notes.
+
+The ID Index links to all notes by id, in order.
+
+The Tag Index links to all notes with a given tag.

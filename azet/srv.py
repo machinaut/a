@@ -4,10 +4,9 @@ import os
 import http.server
 import socketserver
 from functools import partial
+from azet import DOCS_DIR
 
 PORT = 8000
-
-DOCS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'docs')
 
 Handler = partial(http.server.SimpleHTTPRequestHandler, directory=DOCS_DIR)
 
