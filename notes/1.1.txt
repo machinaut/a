@@ -1,7 +1,6 @@
 id: 1.1
 tags: azet
-
-Future of this tool
+title: Future of this tool
 
 I hope that I will update and evolve this tool to suit my needs.
 
@@ -13,4 +12,4 @@ Hyper-linking to other notes would be very useful.  So would hyper-linking to ou
 
 It would be nice to have a more rich editor, that can handle formatting and linking and images.
 
-I also would like this to automatically re-build and re-load as I'm working on it.
+Unit tests would probably be useful for making sure I don't accidentally break things.

@@ -1,8 +1,11 @@
 id: 1.2
 tags: azet
-
-Immediate Improvements
+title: Immediate Improvements
 
 Where [[1.1]] documents long-term vision, this is a list of small tactical improvements.
 
-* Watch for changes locally and rebuild in the server
+* Index uses titles
+
+* Nicer styling on the notes page
+
+* Some way of making link-posts to other pages

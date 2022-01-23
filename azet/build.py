@@ -2,7 +2,6 @@
 import os
 import shlex
 import shutil
-from http.client import NOT_EXTENDED
 
 from azet import DOCS_DIR, NOTES_DIR
 
@@ -14,9 +13,10 @@ NOTE_TEMPLATE = """
 <title>{id}</title>
 </head>
 <body>
-<p>id: {id_link}</p>
-<p>tags: {tag_links}</p>
+<h2>{title}</h2>
 <p>{body}</p>
+<p>tags: {tag_links}</p>
+<p>id: {id_link}</p>
 </body>
 """
 
@@ -38,9 +38,6 @@ INDEX_TEMPLATE = """
 
 def build():
     """Build all the static pages"""
-    # Clean up the old pages
-    shutil.rmtree(DOCS_DIR)
-    os.mkdir(DOCS_DIR)
     # Build the new pages
     notes = parse_notes()
     for note in notes:
@@ -88,6 +85,10 @@ def parse(note_path):
         tags_line = f.readline()
         assert tags_line.startswith("tags:"), tags_line
         note["tags"] = shlex.split(tags_line.replace("tags:", "").strip())
+        # title line
+        title_line = f.readline()
+        assert title_line.startswith("title:"), title_line
+        note["title"] = title_line.replace("title:", "").strip()
         # note body
         note["body"] = f.read().replace("\n", "\n<br>")
     return note
@@ -102,7 +103,7 @@ def write(html_path, note):
         tag_links = ", ".join(tags_links)
         f.write(
             NOTE_TEMPLATE.format(
-                id=note["id"], id_link=id_link, tag_links=tag_links, body=note["body"]
+                id=note["id"], id_link=id_link, tag_links=tag_links, title=note["title"], body=note["body"]
             )
         )
 
@@ -112,15 +113,16 @@ def index(index_path, notes):
     with open(index_path, "w", encoding="utf-8") as f:
         # Build the tag index
         tag_index = "<h2>Tag Index</h2>"
+        # Each tag has its own list of notes
         for tag in set(sum([n["tags"] for n in notes], [])):
-            tag_link = f'<h3 id="{tag}"><a href="/index.html#{tag}">{tag}</a></h3>'
+            tag_link = f'<div id="{tag}"><b><a href="/index.html#{tag}">{tag}</a></b>'
             tag_notes = []
             for note in sorted(notes, key=lambda n: n["id"]):
                 if tag in note["tags"]:
-                    i = note["id"]
-                    id_link = f'<a href="/{i}.html">{i}</a>'
+                    id_link = f'<li><a href="/{note["id"]}.html">{note["id"]}</a>: {note["title"]}</li>'
                     tag_notes.append(id_link)
-            tag_index += tag_link + "<p>" + ", ".join(tag_notes) + "</p>"
+            tag_list = "<ul>" + "\n".join(tag_notes) + "</ul>"
+            tag_index += tag_link + tag_list + '</div>'
         # Build the id index
         id_index = "<h2>Note Index</h2>"
         for note in sorted(notes, key=lambda n: n["id"]):

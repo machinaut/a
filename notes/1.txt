@@ -1,7 +1,6 @@
 id: 1
 tags: azet
-
-What is this?
+title: What is this?
 
 I'm interested in making a Zettelkasten tool that I can use to make my own evergreen notes repository.
 
