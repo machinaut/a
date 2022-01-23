@@ -13,3 +13,5 @@ Hyper-linking to other notes would be very useful.  So would hyper-linking to ou
 It would be nice to have a more rich editor, that can handle formatting and linking and images.
 
 Unit tests would probably be useful for making sure I don't accidentally break things.
+
+There will probably come some point in the future where I am sad about the id numbering and wish to reorganize.  I don't know what I will do then.

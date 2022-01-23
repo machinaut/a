@@ -9,3 +9,5 @@ Where [[1.1]] documents long-term vision, this is a list of small tactical impro
 * Nicer styling on the notes page
 
 * Some way of making link-posts to other pages
+
+* Some way of having a note that's just a quote or a link
