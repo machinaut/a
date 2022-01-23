@@ -1,0 +1,13 @@
+id: 2.1
+tags: reading
+title: What if I printed out everything?
+
+I'm curious if it would be possible to print out everything I read on my computer.
+
+(Not literally everything, many pages I only skim for a minute or two before closing.)
+
+The idea is that every article that is worth more than 15 minutes of my time is probably worth indexing for posterity.
+
+At the very least, maybe I should be digitally storing all of these into some archive for the future.
+
+(The amount of storage costs to just save a pdf of every page/doc I read is probably not too bad.  I should probably do that estimate.)

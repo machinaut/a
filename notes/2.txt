@@ -1,0 +1,17 @@
+id: 2
+tags: reading
+title: How to track what I read
+
+I read a lot of blog posts, forum comments, research papers, and more.
+
+I don't have a great way of tracking what I read, or more importantly, what I thought about it.
+
+Ideally it would be good for this notes system to be able to capture some of these.
+
+Some possibilities:
+
+1. Link-posts, where the note is centerally linked to another webpage or document.
+
+2. Quoting or some way of capturing relevant passages from larger texts.
+
+3. Reviews and summaries.
