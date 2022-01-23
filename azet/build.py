@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-
-# %%
 import os
 import shlex
 import shutil
@@ -44,6 +42,30 @@ def build():
     shutil.rmtree(DOCS_DIR)
     os.mkdir(DOCS_DIR)
     # Build the new pages
+    notes = parse_notes()
+    for note in notes:
+        write(os.path.join(DOCS_DIR, note["id"] + ".html"), note)
+    # Build the index page
+    index(os.path.join(DOCS_DIR, "index.html"), notes)
+
+
+def build_index():
+    """Rebuild the index file"""
+    # Build the new pages
+    notes = parse_notes()
+    # Build the index page
+    index(os.path.join(DOCS_DIR, "index.html"), notes)
+
+
+def build_incremental(note_filename):
+    """Rebuild just a single note and then the index"""
+    note = parse(os.path.join(NOTES_DIR, note_filename))
+    write(os.path.join(DOCS_DIR, note["id"] + ".html"), note)
+    build_index()
+
+
+def parse_notes():
+    """Parse all of the notes, returning a list of dicts"""
     notes = []
     for note_filename in os.listdir(NOTES_DIR):
         # Parse note file
@@ -51,11 +73,7 @@ def build():
         note = parse(os.path.join(NOTES_DIR, note_filename))
         assert note_filename == note["id"] + ".txt", note_filename
         notes.append(note)
-        # Build note page
-        write(os.path.join(DOCS_DIR, note["id"] + ".html"), note)
-    # Build the index page
-    index(os.path.join(DOCS_DIR, "index.html"), notes)
-    print("build")
+    return notes
 
 
 def parse(note_path):
