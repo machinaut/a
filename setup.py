@@ -7,6 +7,6 @@ setup(
     name='azet',
     version='0',
     description='A local zettelkasten tool',
-    author='A Ray',
     packages=['azet'],
+    install_requires=[],
 )
