@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
 # %%
-from http.client import NOT_EXTENDED
 import os
-import shutil
 import shlex
+import shutil
+from http.client import NOT_EXTENDED
+
 from azet import DOCS_DIR, NOTES_DIR
 
 NOTE_TEMPLATE = """
@@ -70,7 +71,7 @@ def parse(note_path):
         assert tags_line.startswith("tags:"), tags_line
         note["tags"] = shlex.split(tags_line.replace("tags:", "").strip())
         # note body
-        note["body"] = f.read()
+        note["body"] = f.read().replace("\n", "\n<br>")
     return note
 
 
@@ -89,7 +90,7 @@ def write(html_path, note):
 
 
 def index(index_path, notes):
-    ''' Generate and write the index html file'''
+    """Generate and write the index html file"""
     with open(index_path, "w", encoding="utf-8") as f:
         # Build the tag index
         tag_index = "<h2>Tag Index</h2>"
